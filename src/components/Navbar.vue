@@ -9,7 +9,7 @@
     </div>
     <div class="top-bar-right">
       <ul class="menu">
-        <li><button class="button" @click="logout">Logout</button></li>
+        <li><el-button type="default" @click="logout">Logout</el-button></li>
       </ul>
     </div>
   </div>
