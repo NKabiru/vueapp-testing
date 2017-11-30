@@ -31,25 +31,31 @@
             
             <div class="cell">
                 <h4>Employee Table</h4>
-                <el-table :class="tableClass">
-                    <thead>
-                        <tr>
-                            <td>ID</td>
-                            <td>Name</td>
-                            <td>Occupation</td>
-                            <td>Gross Income</td>
-                            <td>Net Income</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="employee in taxedEmployees" :key='employee.id'>
-                            <td>{{ employee.id }}</td>
-                            <td>{{ employee.fname }} {{ employee.lname}}</td>
-                            <td>{{ employee.job }}</td>
-                            <td>{{ employee.income}}</td>
-                            <td>{{ employee.netIncome }}</td>
-                        </tr>
-                    </tbody>
+                <el-table :data="taxedEmployees">
+                    <el-table-column
+                        prop="id"
+                        label="ID">
+                    </el-table-column>
+                    <el-table-column
+                        prop="fname"
+                        label="First Name">
+                    </el-table-column>
+                    <el-table-column
+                        prop="lname"
+                        label="Last Name">
+                    </el-table-column>
+                    <el-table-column
+                        prop="job"
+                        label="Occupation">
+                    </el-table-column>
+                    <el-table-column
+                        prop="income"
+                        label="Gross Income">
+                    </el-table-column>
+                    <el-table-column
+                        prop="netIncome"
+                        label="Net Income">
+                    </el-table-column>
                 </el-table>
             </div>
         </div>
@@ -79,17 +85,17 @@
     };
 
     export default {
-        data(){
-           return {
-               options:[
-                   {value: 'Developer', label: 'Developer'},
-                   {value: 'Operator', label: 'Operator'},
-                   {value: 'Manager', label: 'Manager'},
-                   {value: 'Technician', label: 'Technician'},
-                   {value: 'Advisor', label: 'Advisor'}
-               ]
-           }
-        },
+//        data(){
+//           return {
+//               options:[
+//                   {value: 'Developer', label: 'Developer'},
+//                   {value: 'Operator', label: 'Operator'},
+//                   {value: 'Manager', label: 'Manager'},
+//                   {value: 'Technician', label: 'Technician'},
+//                   {value: 'Advisor', label: 'Advisor'}
+//               ]
+//           }
+//        },
         components: {
             ElFormItem,
             ElForm,
