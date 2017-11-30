@@ -1,34 +1,43 @@
 <template>
-  <div class="top-bar">
-    <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <li><router-link :to="{name: 'Home'}"><strong>EMS</strong></router-link></li>
-            <li><router-link :to="{name: 'Employee'}">Employees</router-link></li>
-            <li><router-link :to="{name: 'About'}">About</router-link></li>
-        </ul>
-    </div>
-    <div class="top-bar-right">
-      <ul class="menu">
-        <li><el-button type="default" @click="logout">Logout</el-button></li>
-      </ul>
-    </div>
-  </div>
+    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu-item index="1"><router-link class="navbar-link title" :to="{name: 'Home'}">EMS</router-link></el-menu-item>
+        <el-menu-item index="2"><router-link class="navbar-link" :to="{name: 'Employee'}">Employees</router-link></el-menu-item>
+        <el-menu-item index="3"><router-link class="navbar-link" :to="{name: 'About'}">About</router-link></el-menu-item>
+        <el-menu-item index="4"><el-button plain @click="logout">Logout</el-button></el-menu-item>
+    </el-menu>
 </template>
 
 <script>
+import ElContainer from "../../node_modules/element-ui/packages/container/src/main.vue";
+import ElHeader from "../../node_modules/element-ui/packages/header/src/main.vue";
+import ElMenu from "../../node_modules/element-ui/packages/menu/src/menu.vue";
+import ElButton from "../../node_modules/element-ui/packages/button/src/button.vue";
+
 export default {
-  name: 'Navbar',
+    data() {
+        return {
+            activeIndex: '0'
+        };
+    },
     methods: {
-      logout(){
-          console.log("Logout button clicked");
-      }
-    }
+        handleSelect(key, keyPath) {
+            console.log(key, keyPath);
+        }
+    },
+    components: {
+        ElButton,
+        ElMenu,
+        ElHeader,
+        ElContainer},
+    name: 'Navbar',
 }
 </script>
 
 <style scoped>
-    ul li {
-        color: #000 !important;
-        text-decoration: none !important;
+    .navbar-link {
+        text-decoration: none;
+    }
+    .title {
+        font-size: 20px;
     }
 </style>

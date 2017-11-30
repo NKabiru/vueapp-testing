@@ -2,7 +2,7 @@
     <el-container>
         <el-main>
         <h4>Employee Form</h4>
-            <el-form>
+            <el-form :label-position="left">
                 <el-form-item label="First Name">
                     <el-input type="text" v-model="employee.fname" clearable></el-input>
                 </el-form-item>
@@ -11,11 +11,12 @@
                 </el-form-item>
                 <el-form-item label="Occupation">
                     <el-select v-model="employee.job">
-                        <el-option value="Developer">Developer</el-option>
-                        <el-option value="Operator">Operator</el-option>
-                        <el-option value="Manager">Manager</el-option>
-                        <el-option value="Technician">Technician</el-option>
-                        <el-option value="Advisor">Advisor</el-option>
+                        <el-option
+                                v-for="item in options"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="Income">
@@ -72,12 +73,12 @@
     import ElMain from "../../node_modules/element-ui/packages/main/src/main.vue";
     import ElForm from "../../node_modules/element-ui/packages/form/src/form.vue";
     import ElFormItem from "../../node_modules/element-ui/packages/form/src/form-item.vue";
+    import ElOption from "../../node_modules/element-ui/packages/select/src/option.vue";
 
-    var mixin = {
+    let mixin = {
         methods: {
             addEmployee(){
                 this.employee.id  =`EK${this.employeeList.length + 1}`;
-//                this.employeeList.push(this.employee);
                 this.$store.commit('addEmployee', this.employee);
                 this.employee = {};
             }
@@ -85,29 +86,27 @@
     };
 
     export default {
-//        data(){
-//           return {
-//               options:[
-//                   {value: 'Developer', label: 'Developer'},
-//                   {value: 'Operator', label: 'Operator'},
-//                   {value: 'Manager', label: 'Manager'},
-//                   {value: 'Technician', label: 'Technician'},
-//                   {value: 'Advisor', label: 'Advisor'}
-//               ]
-//           }
-//        },
         components: {
+            ElOption,
             ElFormItem,
             ElForm,
             ElMain,
             ElRow,
             ElCol,
             ElContainer},
+        
         name: 'Employee',
+        
         data() {
             return {
-                employee: {},
-                tableClass: 'unstriped'
+                options:[
+                   {value: 'Developer', label: 'Developer'},
+                   {value: 'Operator', label: 'Operator'},
+                   {value: 'Manager', label: 'Manager'},
+                   {value: 'Technician', label: 'Technician'},
+                   {value: 'Advisor', label: 'Advisor'}
+                ],
+                employee: {}
             }
         },
         mixins: [mixin],
@@ -124,21 +123,13 @@
         methods: {
             netIncome(){
                 this.$store.commit('netIncome');
-            },
-
-            added(){
-                console.log('New employee added');
-                this.$emit('added');
-            },
-//        netIncome(income){
-//            return Math.round(income * 85) / 100;
-//        }
+            }
         }
     }
 </script>
 
 <style>
-
+    
 </style>
 
 
