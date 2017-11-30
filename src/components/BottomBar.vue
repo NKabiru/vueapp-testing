@@ -26,7 +26,7 @@
 
 <style>
     #bottom-bar {
-        background-color: #555;
+        background-color: #555 !important;
         color: #fff;
         height: 4rem;
     }

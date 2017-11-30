@@ -1,9 +1,9 @@
 <template>
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+    <el-menu :default-active="activeIndex" class="el-menu" mode="horizontal" @select="handleSelect">
         <el-menu-item index="1"><router-link class="navbar-link title" :to="{name: 'Home'}">EMS</router-link></el-menu-item>
         <el-menu-item index="2"><router-link class="navbar-link" :to="{name: 'Employee'}">Employees</router-link></el-menu-item>
         <el-menu-item index="3"><router-link class="navbar-link" :to="{name: 'About'}">About</router-link></el-menu-item>
-        <el-menu-item index="4"><el-button plain @click="logout">Logout</el-button></el-menu-item>
+        <el-menu-item id="logout" index="4"><el-button plain @click="logout">Logout</el-button></el-menu-item>
     </el-menu>
 </template>
 
@@ -22,6 +22,11 @@ export default {
     methods: {
         handleSelect(key, keyPath) {
             console.log(key, keyPath);
+        },
+        logout(){
+            this.$alert('Thank you for using EMS!', 'Goodbye!', {
+                confirmButtonText: 'OK'
+            });
         }
     },
     components: {
@@ -34,10 +39,14 @@ export default {
 </script>
 
 <style scoped>
+    #logout {
+        float: right;
+    }
     .navbar-link {
         text-decoration: none;
     }
     .title {
+        font-weight: bolder;
         font-size: 20px;
     }
 </style>

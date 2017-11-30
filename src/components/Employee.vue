@@ -2,28 +2,38 @@
     <el-container>
         <el-main>
         <h4>Employee Form</h4>
-            <el-form :label-position="left">
+            <el-form>
                 <el-form-item label="First Name">
-                    <el-input type="text" v-model="employee.fname" clearable></el-input>
+                    <el-col :span="8">
+                        <el-input type="text" v-model="employee.fname" clearable></el-input>
+                    </el-col>
                 </el-form-item>
                 <el-form-item label="Last Name">
-                    <el-input type="text" v-model="employee.lname" clearable></el-input>
+                    <el-col :span="8">
+                        <el-input type="text" v-model="employee.lname" clearable></el-input>
+                    </el-col>
                 </el-form-item>
                 <el-form-item label="Occupation">
-                    <el-select v-model="employee.job">
-                        <el-option
-                                v-for="item in options"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                        </el-option>
-                    </el-select>
+                    <el-col :span="8">
+                        <el-select v-model="employee.job">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-col>
                 </el-form-item>
                 <el-form-item label="Income">
-                    <el-input type="number" v-model="employee.income"></el-input>
+                    <el-col :span="8">
+                        <el-input type="number" v-model="employee.income"></el-input>
+                    </el-col>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="addEmployee">Add</el-button>
+                    <el-col :span="8">
+                        <el-button type="primary" @click="addEmployee">Add</el-button>
+                    </el-col>
                 </el-form-item>
             </el-form>
 

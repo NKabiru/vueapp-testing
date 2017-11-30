@@ -5,13 +5,19 @@ import App from './App'
 import router from './router'
 import {store} from './components/store/index'
 
+// Foundation-Sites
+import './assets/css/foundation.css'
+import 'script-loader!jquery'
+import 'script-loader!what-input'
+import Foundation from 'foundation-sites'
+
 // Element UI
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
 
-Vue.config.productionTip = false
-Vue.use(ElementUI, { locale })
+Vue.config.productionTip = false;
+Vue.use(ElementUI, { locale });
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
